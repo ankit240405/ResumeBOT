@@ -1578,7 +1578,7 @@ export default function Result() {
                 <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M15 9.354C14.37 9.126 13.695 9 13 9C10.791 9 9 10.791 9 13C9 15.209 10.791 17 13 17C13.695 17 14.37 16.874 15 16.646" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <span>2024 FirstHire Technologies</span>
+              <span>2026 FirstHire Technologies By Ankit Sharma</span>
             </div>
           </div>
         </footer>

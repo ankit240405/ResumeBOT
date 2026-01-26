@@ -51,7 +51,6 @@ export default function Profile() {
 const getAnalyticsData = () => {
   if (scans.length === 0) return null;
 
-  // Remove the .reverse() from here - we'll handle ordering differently
   const scoresOverTime = scans.map(scan => ({
     date: new Date(scan.date),
     hireabilityScore: scan.result.hireability_score,
@@ -63,7 +62,6 @@ const getAnalyticsData = () => {
     recruiterInterest: scan.result.recruiter_interest_score
   }));
 
-  // Sort by date to ensure chronological order (oldest to newest)
   scoresOverTime.sort((a, b) => a.date - b.date);
 
   const averageScores = {
@@ -76,15 +74,13 @@ const getAnalyticsData = () => {
     recruiter: scoresOverTime.reduce((sum, s) => sum + s.recruiterInterest, 0) / scoresOverTime.length
   };
 
-  // Now firstScan is the earliest (oldest) and latestScan is the most recent
-  const latestScan = scoresOverTime[scoresOverTime.length - 1]; // Last item after sorting
-  const firstScan = scoresOverTime[0]; // First item after sorting
-  
+  const latestScan = scoresOverTime[scoresOverTime.length - 1];
+  const firstScan = scoresOverTime[0]; 
   const improvementPercentage = firstScan ? 
     ((latestScan.hireabilityScore - firstScan.hireabilityScore) / firstScan.hireabilityScore * 100).toFixed(1) : 0;
 
   return {
-    scoresOverTime, // Now sorted chronologically
+    scoresOverTime, 
     averageScores,
     latestScan,
     firstScan,
@@ -1061,7 +1057,7 @@ const getAnalyticsData = () => {
             </div>
           </div>
           <div style={{ fontSize: '12px', color: '#64748b', marginTop: '15px' }}>
-            © 2024 FirstHire • AI ATS Analytics
+            © 2026 FirstHire • AI ATS Analytics By Ankit Sharma
           </div>
         </footer>
       </div>

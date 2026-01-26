@@ -19,8 +19,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setToken(null);
     localStorage.removeItem("authToken");
-        window.location.href = "/login"; // ✅ force re-login
-
+        window.location.href = "/login"; 
   };
 
   const value = { token, login, logout, isAuthenticated: !!token };
