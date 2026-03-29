@@ -98,26 +98,25 @@ const getAnalyticsData = () => {
     return (
       <div style={{
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+        background: '#FFFFFF',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
       }}>
         <div style={{
           padding: '40px',
-          background: 'rgba(255, 255, 255, 0.03)',
-          backdropFilter: 'blur(20px)',
+          background: '#F9FAFB',
           borderRadius: '24px',
-          border: '1px solid rgba(255, 255, 255, 0.1)'
+          border: '1px solid #E5E7EB'
         }}>
           <div style={{ width: '50px', height: '50px', margin: '0 auto 20px' }}>
             <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-              <circle cx="25" cy="25" r="20" stroke="#3b82f6" strokeWidth="4" strokeLinecap="round" strokeDasharray="31.4 31.4">
+              <circle cx="25" cy="25" r="20" stroke="#10B981" strokeWidth="4" strokeLinecap="round" strokeDasharray="31.4 31.4">
                 <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
               </circle>
             </svg>
           </div>
-          <div style={{ color: '#f8fafc', textAlign: 'center' }}>Loading your analytics dashboard…</div>
+          <div style={{ color: '#6B7280', textAlign: 'center' }}>Loading your analytics dashboard…</div>
         </div>
       </div>
     );
@@ -127,18 +126,17 @@ const getAnalyticsData = () => {
     return (
       <div style={{
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+        background: '#FFFFFF',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
       }}>
         <div style={{
           padding: '40px',
-          background: 'rgba(239, 68, 68, 0.1)',
-          backdropFilter: 'blur(20px)',
+          background: '#FEF2F2',
           borderRadius: '24px',
-          border: '1px solid rgba(239, 68, 68, 0.2)',
-          color: '#ef4444',
+          border: '1px solid #FEE2E2',
+          color: '#EF4444',
           textAlign: 'center'
         }}>
           {error}
@@ -149,34 +147,35 @@ const getAnalyticsData = () => {
 
   const CompactScanCard = ({ scan, index, total }) => {
     const score = scan.result.hireability_score;
-    const scoreColor = score >= 80 ? '#10b981' : score >= 60 ? '#f59e0b' : '#ef4444';
+    const scoreColor = score >= 80 ? '#10B981' : score >= 60 ? '#F59E0B' : '#EF4444';
     
     return (
       <div style={{
         flex: 1,
-        background: 'rgba(255, 255, 255, 0.02)',
+        background: '#FFFFFF',
         borderRadius: '16px',
         padding: '20px',
-        border: '1px solid rgba(255, 255, 255, 0.05)',
+        border: '1px solid #E5E7EB',
         transition: 'all 0.3s ease',
         minWidth: '0',
-        width: '100%'
+        width: '100%',
+        boxShadow: '0 1px 2px rgba(0, 0, 0, 0.05)'
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
         e.currentTarget.style.transform = 'translateY(-2px)';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
+        e.currentTarget.style.boxShadow = '0 1px 2px rgba(0, 0, 0, 0.05)';
         e.currentTarget.style.transform = 'translateY(0)';
       }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '15px', flexWrap: 'wrap', gap: '10px' }}>
           <div style={{ flex: 1, minWidth: '200px' }}>
-            <div style={{ fontSize: '16px', fontWeight: '700', color: '#f8fafc', marginBottom: '5px' }}>
+            <div style={{ fontSize: '16px', fontWeight: '700', color: '#111827', marginBottom: '5px' }}>
               Scan #{total - index}
             </div>
-            <div style={{ fontSize: '13px', color: '#94a3b8' }}>
+            <div style={{ fontSize: '13px', color: '#6B7280' }}>
               {new Date(scan.date).toLocaleDateString('en-US', { 
                 month: 'short',
                 day: 'numeric',
@@ -188,12 +187,12 @@ const getAnalyticsData = () => {
           </div>
           <div style={{
             padding: '6px 14px',
-            background: `rgba(${score >= 80 ? '16, 185, 129' : score >= 60 ? '245, 158, 11' : '239, 68, 68'}, 0.1)`,
+            background: score >= 80 ? '#F0FDF4' : score >= 60 ? '#FEF3C7' : '#FEF2F2',
             color: scoreColor,
             borderRadius: '50px',
             fontSize: '14px',
             fontWeight: '700',
-            border: `1px solid rgba(${score >= 80 ? '16, 185, 129' : score >= 60 ? '245, 158, 11' : '239, 68, 68'}, 0.3)`,
+            border: `1px solid ${score >= 80 ? '#DCFCE7' : score >= 60 ? '#FDE68A' : '#FEE2E2'}`,
             whiteSpace: 'nowrap'
           }}>
             Score: {score.toFixed(1)}
@@ -207,29 +206,29 @@ const getAnalyticsData = () => {
           marginBottom: '15px'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-            <span style={{ color: '#94a3b8' }}>Content Strength:</span>
-            <span style={{ color: '#3b82f6', fontWeight: '600' }}>{scan.result.content_strength.toFixed(1)}</span>
+            <span style={{ color: '#6B7280' }}>Content Strength:</span>
+            <span style={{ color: '#10B981', fontWeight: '600' }}>{scan.result.content_strength.toFixed(1)}</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-            <span style={{ color: '#94a3b8' }}>Formatting:</span>
-            <span style={{ color: '#8b5cf6', fontWeight: '600' }}>{scan.result.formatting_score.toFixed(1)}</span>
+            <span style={{ color: '#6B7280' }}>Formatting:</span>
+            <span style={{ color: '#8B5CF6', fontWeight: '600' }}>{scan.result.formatting_score.toFixed(1)}</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-            <span style={{ color: '#94a3b8' }}>Writing Quality:</span>
-            <span style={{ color: '#10b981', fontWeight: '600' }}>{scan.result.writing_quality.toFixed(1)}</span>
+            <span style={{ color: '#6B7280' }}>Writing Quality:</span>
+            <span style={{ color: '#10B981', fontWeight: '600' }}>{scan.result.writing_quality.toFixed(1)}</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-            <span style={{ color: '#94a3b8' }}>Role Alignment:</span>
-            <span style={{ color: '#f59e0b', fontWeight: '600' }}>{scan.result.role_alignment_score.toFixed(1)}</span>
+            <span style={{ color: '#6B7280' }}>Role Alignment:</span>
+            <span style={{ color: '#F59E0B', fontWeight: '600' }}>{scan.result.role_alignment_score.toFixed(1)}</span>
           </div>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {scan.result.strengths?.length > 0 && (
             <div style={{
-              background: 'rgba(16, 185, 129, 0.05)',
+              background: '#F0FDF4',
               borderRadius: '8px',
-              border: '1px solid rgba(16, 185, 129, 0.1)',
+              border: '1px solid #DCFCE7',
               overflow: 'hidden'
             }}>
               <div 
@@ -239,16 +238,16 @@ const getAnalyticsData = () => {
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   cursor: 'pointer',
-                  background: 'rgba(16, 185, 129, 0.1)'
+                  background: '#DCFCE7'
                 }}
                 onClick={() => toggleExpand(scan._id, 'strengths')}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ fontSize: '12px', color: '#10b981', fontWeight: '600' }}>
+                  <span style={{ fontSize: '12px', color: '#059669', fontWeight: '600' }}>
                     ✓ Strengths ({scan.result.strengths.length})
                   </span>
                 </div>
-                <span style={{ fontSize: '12px', color: '#10b981', transition: 'transform 0.3s ease', 
+                <span style={{ fontSize: '12px', color: '#059669', transition: 'transform 0.3s ease', 
                   transform: expandedSections[`${scan._id}-strengths`] ? 'rotate(180deg)' : 'rotate(0deg)' }}>
                   ▼
                 </span>
@@ -259,12 +258,12 @@ const getAnalyticsData = () => {
                   {scan.result.strengths.map((strength, idx) => (
                     <div key={idx} style={{
                       padding: '8px',
-                      background: 'rgba(16, 185, 129, 0.05)',
+                      background: '#F0FDF4',
                       borderRadius: '4px',
                       marginBottom: '6px',
                       fontSize: '13px',
-                      color: '#cbd5e1',
-                      borderLeft: '3px solid #10b981'
+                      color: '#374151',
+                      borderLeft: '3px solid #10B981'
                     }}>
                       {strength}
                     </div>
@@ -276,9 +275,9 @@ const getAnalyticsData = () => {
 
           {scan.result.weaknesses?.length > 0 && (
             <div style={{
-              background: 'rgba(239, 68, 68, 0.05)',
+              background: '#FEF2F2',
               borderRadius: '8px',
-              border: '1px solid rgba(239, 68, 68, 0.1)',
+              border: '1px solid #FEE2E2',
               overflow: 'hidden'
             }}>
               <div 
@@ -288,16 +287,16 @@ const getAnalyticsData = () => {
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   cursor: 'pointer',
-                  background: 'rgba(239, 68, 68, 0.1)'
+                  background: '#FEE2E2'
                 }}
                 onClick={() => toggleExpand(scan._id, 'weaknesses')}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ fontSize: '12px', color: '#ef4444', fontWeight: '600' }}>
+                  <span style={{ fontSize: '12px', color: '#DC2626', fontWeight: '600' }}>
                     ⚠️ Weaknesses ({scan.result.weaknesses.length})
                   </span>
                 </div>
-                <span style={{ fontSize: '12px', color: '#ef4444', transition: 'transform 0.3s ease', 
+                <span style={{ fontSize: '12px', color: '#DC2626', transition: 'transform 0.3s ease', 
                   transform: expandedSections[`${scan._id}-weaknesses`] ? 'rotate(180deg)' : 'rotate(0deg)' }}>
                   ▼
                 </span>
@@ -308,12 +307,12 @@ const getAnalyticsData = () => {
                   {scan.result.weaknesses.map((weakness, idx) => (
                     <div key={idx} style={{
                       padding: '8px',
-                      background: 'rgba(239, 68, 68, 0.05)',
+                      background: '#FEF2F2',
                       borderRadius: '4px',
                       marginBottom: '6px',
                       fontSize: '13px',
-                      color: '#cbd5e1',
-                      borderLeft: '3px solid #ef4444'
+                      color: '#374151',
+                      borderLeft: '3px solid #EF4444'
                     }}>
                       {weakness}
                     </div>
@@ -325,9 +324,9 @@ const getAnalyticsData = () => {
 
           {scan.result.role_fit?.length > 0 && (
             <div style={{
-              background: 'rgba(168, 85, 247, 0.05)',
+              background: '#F5F3FF',
               borderRadius: '8px',
-              border: '1px solid rgba(168, 85, 247, 0.1)',
+              border: '1px solid #EDE9FE',
               overflow: 'hidden'
             }}>
               <div 
@@ -337,16 +336,16 @@ const getAnalyticsData = () => {
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   cursor: 'pointer',
-                  background: 'rgba(168, 85, 247, 0.1)'
+                  background: '#EDE9FE'
                 }}
                 onClick={() => toggleExpand(scan._id, 'role_fit')}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ fontSize: '12px', color: '#a855f7', fontWeight: '600' }}>
+                  <span style={{ fontSize: '12px', color: '#7C3AED', fontWeight: '600' }}>
                     ⚡ Role Fit ({scan.result.role_fit.length})
                   </span>
                 </div>
-                <span style={{ fontSize: '12px', color: '#a855f7', transition: 'transform 0.3s ease', 
+                <span style={{ fontSize: '12px', color: '#7C3AED', transition: 'transform 0.3s ease', 
                   transform: expandedSections[`${scan._id}-role_fit`] ? 'rotate(180deg)' : 'rotate(0deg)' }}>
                   ▼
                 </span>
@@ -357,12 +356,12 @@ const getAnalyticsData = () => {
                   {scan.result.role_fit.map((fit, idx) => (
                     <div key={idx} style={{
                       padding: '8px',
-                      background: 'rgba(168, 85, 247, 0.05)',
+                      background: '#F5F3FF',
                       borderRadius: '4px',
                       marginBottom: '6px',
                       fontSize: '13px',
-                      color: '#cbd5e1',
-                      borderLeft: '3px solid #a855f7'
+                      color: '#374151',
+                      borderLeft: '3px solid #8B5CF6'
                     }}>
                       {fit}
                     </div>
@@ -374,9 +373,9 @@ const getAnalyticsData = () => {
 
           {scan.result.improvement_suggestions?.length > 0 && (
             <div style={{
-              background: 'rgba(59, 130, 246, 0.05)',
+              background: '#F0FDF4',
               borderRadius: '8px',
-              border: '1px solid rgba(59, 130, 246, 0.1)',
+              border: '1px solid #DCFCE7',
               overflow: 'hidden'
             }}>
               <div 
@@ -386,16 +385,16 @@ const getAnalyticsData = () => {
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   cursor: 'pointer',
-                  background: 'rgba(59, 130, 246, 0.1)'
+                  background: '#DCFCE7'
                 }}
                 onClick={() => toggleExpand(scan._id, 'suggestions')}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ fontSize: '12px', color: '#3b82f6', fontWeight: '600' }}>
+                  <span style={{ fontSize: '12px', color: '#059669', fontWeight: '600' }}>
                     💡 Suggestions ({scan.result.improvement_suggestions.length})
                   </span>
                 </div>
-                <span style={{ fontSize: '12px', color: '#3b82f6', transition: 'transform 0.3s ease', 
+                <span style={{ fontSize: '12px', color: '#059669', transition: 'transform 0.3s ease', 
                   transform: expandedSections[`${scan._id}-suggestions`] ? 'rotate(180deg)' : 'rotate(0deg)' }}>
                   ▼
                 </span>
@@ -406,12 +405,12 @@ const getAnalyticsData = () => {
                   {scan.result.improvement_suggestions.map((suggestion, idx) => (
                     <div key={idx} style={{
                       padding: '8px',
-                      background: 'rgba(59, 130, 246, 0.05)',
+                      background: '#F0FDF4',
                       borderRadius: '4px',
                       marginBottom: '6px',
                       fontSize: '13px',
-                      color: '#cbd5e1',
-                      borderLeft: '3px solid #3b82f6'
+                      color: '#374151',
+                      borderLeft: '3px solid #10B981'
                     }}>
                       {suggestion}
                     </div>
@@ -428,9 +427,9 @@ const getAnalyticsData = () => {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+      background: '#FFFFFF',
       fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-      color: '#f8fafc',
+      color: '#111827',
       padding: '20px',
       position: 'relative'
     }}>
@@ -445,11 +444,11 @@ const getAnalyticsData = () => {
         overflow: 'hidden',
         pointerEvents: 'none'
       }}>
-        {[...Array(10)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <div key={i} style={{
             position: 'absolute',
             background: `radial-gradient(circle, 
-              rgba(${Math.random() * 100 + 100}, ${Math.random() * 100 + 150}, 255, ${0.1 + Math.random() * 0.1}) 0%,
+              rgba(16, 185, 129, ${0.03 + Math.random() * 0.05}) 0%,
               transparent 70%
             )`,
             borderRadius: '50%',
@@ -466,12 +465,11 @@ const getAnalyticsData = () => {
       <div style={{ position: 'relative', zIndex: 1, maxWidth: '1600px', margin: '0 auto' }}>
         
         <div style={{
-          background: 'rgba(255, 255, 255, 0.03)',
-          backdropFilter: 'blur(20px)',
+          background: '#FFFFFF',
           borderRadius: '24px',
           padding: '30px',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          boxShadow: '0 20px 50px rgba(0, 0, 0, 0.2)',
+          border: '1px solid #E5E7EB',
+          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
           marginBottom: '30px'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '25px', flexWrap: 'wrap' }}>
@@ -480,9 +478,9 @@ const getAnalyticsData = () => {
               width: '100px',
               height: '100px',
               borderRadius: '50%',
-              border: '3px solid #2563eb',
+              border: '3px solid #10B981',
               padding: '3px',
-              background: 'linear-gradient(135deg, #2563eb, #1d4ed8)',
+              background: 'linear-gradient(135deg, #10B981, #059669)',
               flexShrink: 0
             }}>
               <img
@@ -493,7 +491,7 @@ const getAnalyticsData = () => {
                   height: '100%',
                   borderRadius: '50%',
                   objectFit: 'cover',
-                  border: '2px solid #0f172a'
+                  border: '2px solid #FFFFFF'
                 }}
               />
               <div style={{
@@ -502,9 +500,10 @@ const getAnalyticsData = () => {
                 right: '8px',
                 width: '18px',
                 height: '18px',
-                background: '#10b981',
+                background: '#10B981',
                 borderRadius: '50%',
-                border: '2px solid #0f172a'
+                border: '2px solid #FFFFFF',
+                boxShadow: '0 0 0 2px #FFFFFF'
               }} />
             </div>
 
@@ -514,16 +513,13 @@ const getAnalyticsData = () => {
                   fontSize: '32px',
                   fontWeight: '800',
                   margin: '0',
-                  background: 'linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
+                  color: '#111827'
                 }}>
                   {user.fullName || user.username}
                 </h1>
                 <div style={{
                   padding: '6px 16px',
-                  background: 'linear-gradient(135deg, #10b981, #34d399)',
+                  background: 'linear-gradient(135deg, #10B981, #059669)',
                   color: 'white',
                   borderRadius: '50px',
                   fontSize: '14px',
@@ -538,32 +534,32 @@ const getAnalyticsData = () => {
                 </div>
               </div>
               
-              <p style={{ fontSize: '16px', color: '#94a3b8', margin: '0 0 15px 0' }}>
+              <p style={{ fontSize: '16px', color: '#6B7280', margin: '0 0 15px 0' }}>
                 {user.primaryEmailAddress?.emailAddress}
               </p>
               
               <div style={{ display: 'flex', gap: '25px', flexWrap: 'wrap' }}>
                 <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '24px', fontWeight: '700', color: '#3b82f6' }}>{scans.length}</div>
-                  <div style={{ fontSize: '14px', color: '#94a3b8' }}>Total Scans</div>
+                  <div style={{ fontSize: '24px', fontWeight: '700', color: '#10B981' }}>{scans.length}</div>
+                  <div style={{ fontSize: '14px', color: '#6B7280' }}>Total Scans</div>
                 </div>
                 <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '24px', fontWeight: '700', color: '#10b981' }}>
+                  <div style={{ fontSize: '24px', fontWeight: '700', color: '#10B981' }}>
                     {analytics ? `${analytics.improvementPercentage}%` : '0%'}
                   </div>
-                  <div style={{ fontSize: '14px', color: '#94a3b8' }}>Overall Improvement</div>
+                  <div style={{ fontSize: '14px', color: '#6B7280' }}>Overall Improvement</div>
                 </div>
                 <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '24px', fontWeight: '700', color: '#f59e0b' }}>
+                  <div style={{ fontSize: '24px', fontWeight: '700', color: '#F59E0B' }}>
                     {analytics ? `${analytics.averageScores.hireability.toFixed(1)}` : '0'}
                   </div>
-                  <div style={{ fontSize: '14px', color: '#94a3b8' }}>Avg Score</div>
+                  <div style={{ fontSize: '14px', color: '#6B7280' }}>Avg Score</div>
                 </div>
                 <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '24px', fontWeight: '700', color: '#8b5cf6' }}>
+                  <div style={{ fontSize: '24px', fontWeight: '700', color: '#8B5CF6' }}>
                     {analytics && analytics.latestScan ? new Date(analytics.latestScan.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'N/A'}
                   </div>
-                  <div style={{ fontSize: '14px', color: '#94a3b8' }}>Last Scan</div>
+                  <div style={{ fontSize: '14px', color: '#6B7280' }}>Last Scan</div>
                 </div>
               </div>
             </div>
@@ -572,18 +568,17 @@ const getAnalyticsData = () => {
 
         {analytics && (
           <div style={{
-            background: 'rgba(255, 255, 255, 0.03)',
-            backdropFilter: 'blur(20px)',
+            background: '#FFFFFF',
             borderRadius: '24px',
             padding: '30px',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.2)',
+            border: '1px solid #E5E7EB',
+            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
             marginBottom: '30px'
           }}>
             <h2 style={{
               fontSize: '28px',
               fontWeight: '800',
-              color: '#f8fafc',
+              color: '#111827',
               margin: '0 0 30px 0',
               textAlign: 'center'
             }}>
@@ -597,36 +592,36 @@ const getAnalyticsData = () => {
               marginBottom: '30px'
             }}>
               <div style={{
-                background: 'rgba(16, 185, 129, 0.05)',
+                background: '#F0FDF4',
                 borderRadius: '20px',
                 padding: '20px',
-                border: '1px solid rgba(16, 185, 129, 0.2)'
+                border: '1px solid #DCFCE7'
               }}>
-                <h3 style={{ margin: '0 0 15px 0', fontSize: '20px', color: '#f8fafc', fontWeight: '700' }}>
+                <h3 style={{ margin: '0 0 15px 0', fontSize: '20px', color: '#111827', fontWeight: '700' }}>
                   Progress Overview
                 </h3>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-                  <span style={{ fontSize: '14px', color: '#94a3b8' }}>Start Score</span>
-                  <span style={{ fontSize: '16px', fontWeight: '600', color: '#f8fafc' }}>
+                  <span style={{ fontSize: '14px', color: '#6B7280' }}>Start Score</span>
+                  <span style={{ fontSize: '16px', fontWeight: '600', color: '#111827' }}>
                     {analytics.firstScan ? analytics.firstScan.hireabilityScore.toFixed(1) : analytics.latestScan.hireabilityScore.toFixed(1)}
                   </span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-                  <span style={{ fontSize: '14px', color: '#94a3b8' }}>Current Score</span>
-                  <span style={{ fontSize: '16px', fontWeight: '600', color: '#10b981' }}>
+                  <span style={{ fontSize: '14px', color: '#6B7280' }}>Current Score</span>
+                  <span style={{ fontSize: '16px', fontWeight: '600', color: '#10B981' }}>
                     {analytics.latestScan.hireabilityScore.toFixed(1)}
                   </span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
-                  <span style={{ fontSize: '14px', color: '#94a3b8' }}>Improvement</span>
-                  <span style={{ fontSize: '16px', fontWeight: '600', color: analytics.improvementPercentage > 0 ? '#10b981' : '#ef4444' }}>
+                  <span style={{ fontSize: '14px', color: '#6B7280' }}>Improvement</span>
+                  <span style={{ fontSize: '16px', fontWeight: '600', color: analytics.improvementPercentage > 0 ? '#10B981' : '#EF4444' }}>
                     {analytics.improvementPercentage}%
                   </span>
                 </div>
                 <div style={{
                   width: '100%',
                   height: '8px',
-                  background: 'rgba(255, 255, 255, 0.05)',
+                  background: '#E5E7EB',
                   borderRadius: '4px',
                   overflow: 'hidden',
                   marginBottom: '15px'
@@ -634,39 +629,39 @@ const getAnalyticsData = () => {
                   <div style={{
                     width: `${Math.min(100, Math.max(0, analytics.improvementPercentage + 50))}%`,
                     height: '100%',
-                    background: 'linear-gradient(90deg, #2563eb, #3b82f6)',
+                    background: 'linear-gradient(90deg, #10B981, #059669)',
                     borderRadius: '4px'
                   }} />
                 </div>
-                <div style={{ fontSize: '12px', color: '#94a3b8', textAlign: 'center' }}>
+                <div style={{ fontSize: '12px', color: '#6B7280', textAlign: 'center' }}>
                   {analytics.trend === 'improving' ? '📈 Performance improving consistently' : '📉 Focus on improvement areas'}
                 </div>
               </div>
 
               <div style={{
-                background: 'rgba(139, 92, 246, 0.05)',
+                background: '#F5F3FF',
                 borderRadius: '20px',
                 padding: '20px',
-                border: '1px solid rgba(139, 92, 246, 0.2)'
+                border: '1px solid #EDE9FE'
               }}>
-                <h3 style={{ margin: '0 0 15px 0', fontSize: '20px', color: '#f8fafc', fontWeight: '700' }}>
+                <h3 style={{ margin: '0 0 15px 0', fontSize: '20px', color: '#111827', fontWeight: '700' }}>
                   Score Range
                 </h3>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-                  <span style={{ fontSize: '14px', color: '#94a3b8' }}>Highest</span>
-                  <span style={{ fontSize: '16px', fontWeight: '600', color: '#10b981' }}>
+                  <span style={{ fontSize: '14px', color: '#6B7280' }}>Highest</span>
+                  <span style={{ fontSize: '16px', fontWeight: '600', color: '#10B981' }}>
                     {analytics.highestScore.toFixed(1)}
                   </span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-                  <span style={{ fontSize: '14px', color: '#94a3b8' }}>Lowest</span>
-                  <span style={{ fontSize: '16px', fontWeight: '600', color: '#ef4444' }}>
+                  <span style={{ fontSize: '14px', color: '#6B7280' }}>Lowest</span>
+                  <span style={{ fontSize: '16px', fontWeight: '600', color: '#EF4444' }}>
                     {analytics.lowestScore.toFixed(1)}
                   </span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
-                  <span style={{ fontSize: '14px', color: '#94a3b8' }}>Range</span>
-                  <span style={{ fontSize: '16px', fontWeight: '600', color: '#f8fafc' }}>
+                  <span style={{ fontSize: '14px', color: '#6B7280' }}>Range</span>
+                  <span style={{ fontSize: '16px', fontWeight: '600', color: '#111827' }}>
                     {(analytics.highestScore - analytics.lowestScore).toFixed(1)}
                   </span>
                 </div>
@@ -676,11 +671,11 @@ const getAnalyticsData = () => {
                   gap: '10px',
                   marginBottom: '15px'
                 }}>
-                  <div style={{ fontSize: '12px', color: '#94a3b8', minWidth: '40px' }}>0</div>
+                  <div style={{ fontSize: '12px', color: '#6B7280', minWidth: '40px' }}>0</div>
                   <div style={{
                     flex: 1,
                     height: '8px',
-                    background: 'linear-gradient(90deg, #ef4444, #f59e0b, #10b981)',
+                    background: 'linear-gradient(90deg, #EF4444, #F59E0B, #10B981)',
                     borderRadius: '4px',
                     position: 'relative'
                   }}>
@@ -689,28 +684,28 @@ const getAnalyticsData = () => {
                       left: `${analytics.lowestScore}%`,
                       width: `${Math.max(2, analytics.highestScore - analytics.lowestScore)}%`,
                       height: '12px',
-                      background: '#f8fafc',
+                      background: '#111827',
                       borderRadius: '6px',
                       top: '-2px'
                     }} />
                   </div>
-                  <div style={{ fontSize: '12px', color: '#94a3b8', minWidth: '40px' }}>100</div>
+                  <div style={{ fontSize: '12px', color: '#6B7280', minWidth: '40px' }}>100</div>
                 </div>
-                <div style={{ fontSize: '12px', color: '#94a3b8', textAlign: 'center' }}>
+                <div style={{ fontSize: '12px', color: '#6B7280', textAlign: 'center' }}>
                   Your score stability: {((analytics.highestScore - analytics.lowestScore) < 20 ? 'Good' : 'Needs Consistency')}
                 </div>
               </div>
 
               <div style={{
-                background: 'rgba(245, 158, 11, 0.05)',
+                background: '#FEF3C7',
                 borderRadius: '20px',
                 padding: '20px',
-                border: '1px solid rgba(245, 158, 11, 0.2)'
+                border: '1px solid #FDE68A'
               }}>
-                <h3 style={{ margin: '0 0 15px 0', fontSize: '20px', color: '#f8fafc', fontWeight: '700' }}>
+                <h3 style={{ margin: '0 0 15px 0', fontSize: '20px', color: '#111827', fontWeight: '700' }}>
                   Scan Frequency
                 </h3>
-                <div style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '20px' }}>
+                <div style={{ fontSize: '14px', color: '#6B7280', marginBottom: '20px' }}>
                   Average time between scans
                 </div>
                 {scans.length > 1 && (
@@ -722,29 +717,29 @@ const getAnalyticsData = () => {
                     marginBottom: '20px'
                   }}>
                     <div style={{ textAlign: 'center' }}>
-                      <div style={{ fontSize: '32px', fontWeight: '800', color: '#f59e0b' }}>
+                      <div style={{ fontSize: '32px', fontWeight: '800', color: '#F59E0B' }}>
                         {Math.max(1, Math.floor((new Date(scans[0].date) - new Date(scans[scans.length - 1].date)) / (1000 * 60 * 60 * 24 * Math.max(1, scans.length - 1))))}
                       </div>
-                      <div style={{ fontSize: '12px', color: '#94a3b8' }}>Avg Days</div>
+                      <div style={{ fontSize: '12px', color: '#6B7280' }}>Avg Days</div>
                     </div>
                   </div>
                 )}
-                <div style={{ fontSize: '12px', color: '#94a3b8', textAlign: 'center' }}>
+                <div style={{ fontSize: '12px', color: '#6B7280', textAlign: 'center' }}>
                   {scans.length > 3 ? 'Regular optimization schedule' : 'Consider scanning more frequently'}
                 </div>
               </div>
             </div>
 
             <div style={{ marginBottom: '30px' }}>
-              <h3 style={{ margin: '0 0 20px 0', fontSize: '20px', color: '#f8fafc', fontWeight: '700' }}>
+              <h3 style={{ margin: '0 0 20px 0', fontSize: '20px', color: '#111827', fontWeight: '700' }}>
                 Score Trend Analysis
               </h3>
               <div style={{
                 height: '300px',
                 padding: '20px',
-                background: 'rgba(255, 255, 255, 0.02)',
+                background: '#F9FAFB',
                 borderRadius: '16px',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
+                border: '1px solid #E5E7EB',
                 position: 'relative',
                 overflow: 'hidden'
               }}>
@@ -753,12 +748,12 @@ const getAnalyticsData = () => {
                     <>
                       <defs>
                         <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#3b82f6" />
-                          <stop offset="100%" stopColor="#8b5cf6" />
+                          <stop offset="0%" stopColor="#10B981" />
+                          <stop offset="100%" stopColor="#059669" />
                         </linearGradient>
                         <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.3" />
-                          <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+                          <stop offset="0%" stopColor="#10B981" stopOpacity="0.3" />
+                          <stop offset="100%" stopColor="#10B981" stopOpacity="0" />
                         </linearGradient>
                       </defs>
                       
@@ -769,7 +764,7 @@ const getAnalyticsData = () => {
                           y1={`${100 - line}%`}
                           x2="100%"
                           y2={`${100 - line}%`}
-                          stroke="rgba(255, 255, 255, 0.1)"
+                          stroke="#E5E7EB"
                           strokeWidth="1"
                           strokeDasharray="5,5"
                         />
@@ -786,7 +781,7 @@ const getAnalyticsData = () => {
                               y1="0%"
                               x2={x1}
                               y2="100%"
-                              stroke="rgba(255, 255, 255, 0.05)"
+                              stroke="#E5E7EB"
                               strokeWidth="1"
                             />
                           );
@@ -827,15 +822,15 @@ const getAnalyticsData = () => {
                               cx={x}
                               cy={y}
                               r="4"
-                              fill="#3b82f6"
-                              stroke="#0f172a"
+                              fill="#10B981"
+                              stroke="#FFFFFF"
                               strokeWidth="2"
                             />
                             <text
                               x={x}
                               y={`${100 - scan.hireabilityScore - 5}%`}
                               textAnchor="middle"
-                              fill="#f8fafc"
+                              fill="#111827"
                               fontSize="10"
                               fontWeight="600"
                             >
@@ -854,7 +849,7 @@ const getAnalyticsData = () => {
                               x={x}
                               y="105%"
                               textAnchor="middle"
-                              fill="#94a3b8"
+                              fill="#6B7280"
                               fontSize="10"
                             >
                               {scan.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
@@ -869,7 +864,7 @@ const getAnalyticsData = () => {
                       x="50%"
                       y="50%"
                       textAnchor="middle"
-                      fill="#94a3b8"
+                      fill="#6B7280"
                       fontSize="14"
                     >
                       Add more scans to see trend analysis
@@ -880,7 +875,7 @@ const getAnalyticsData = () => {
             </div>
 
             <div>
-              <h3 style={{ margin: '0 0 20px 0', fontSize: '20px', color: '#f8fafc', fontWeight: '700' }}>
+              <h3 style={{ margin: '0 0 20px 0', fontSize: '20px', color: '#111827', fontWeight: '700' }}>
                 Category Performance Comparison
               </h3>
               <div style={{
@@ -889,23 +884,23 @@ const getAnalyticsData = () => {
                 gap: '15px'
               }}>
                 {[
-                  { label: 'Content Strength', value: analytics.averageScores.content, color: '#3b82f6' },
-                  { label: 'Formatting Score', value: analytics.averageScores.formatting, color: '#8b5cf6' },
-                  { label: 'Writing Quality', value: analytics.averageScores.writing, color: '#10b981' },
-                  { label: 'Section Completeness', value: analytics.averageScores.section, color: '#f59e0b' },
-                  { label: 'Role Alignment Score', value: analytics.averageScores.role, color: '#ec4899' },
-                  { label: 'Recruiter Interest Score', value: analytics.averageScores.recruiter, color: '#06b6d4' }
+                  { label: 'Content Strength', value: analytics.averageScores.content, color: '#10B981' },
+                  { label: 'Formatting Score', value: analytics.averageScores.formatting, color: '#8B5CF6' },
+                  { label: 'Writing Quality', value: analytics.averageScores.writing, color: '#10B981' },
+                  { label: 'Section Completeness', value: analytics.averageScores.section, color: '#F59E0B' },
+                  { label: 'Role Alignment Score', value: analytics.averageScores.role, color: '#EC4899' },
+                  { label: 'Recruiter Interest Score', value: analytics.averageScores.recruiter, color: '#06B6D4' }
                 ].map((category, index) => (
                   <div key={index} style={{
-                    background: `rgba(${category.value >= 70 ? '16, 185, 129' : category.value >= 50 ? '245, 158, 11' : '239, 68, 68'}, ${0.1 + category.value / 200})`,
+                    background: category.value >= 70 ? '#F0FDF4' : category.value >= 50 ? '#FEF3C7' : '#FEF2F2',
                     padding: '15px',
                     borderRadius: '12px',
-                    border: `1px solid rgba(${category.value >= 70 ? '16, 185, 129' : category.value >= 50 ? '245, 158, 11' : '239, 68, 68'}, 0.3)`
+                    border: `1px solid ${category.value >= 70 ? '#DCFCE7' : category.value >= 50 ? '#FDE68A' : '#FEE2E2'}`
                   }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                       <div style={{
                         fontSize: '14px',
-                        color: '#f8fafc',
+                        color: '#111827',
                         fontWeight: '600'
                       }}>
                         {category.label}
@@ -913,7 +908,7 @@ const getAnalyticsData = () => {
                       <div style={{
                         fontSize: '18px',
                         fontWeight: '800',
-                        color: category.value >= 70 ? '#10b981' : category.value >= 50 ? '#f59e0b' : '#ef4444'
+                        color: category.value >= 70 ? '#10B981' : category.value >= 50 ? '#F59E0B' : '#EF4444'
                       }}>
                         {category.value.toFixed(1)}
                       </div>
@@ -921,7 +916,7 @@ const getAnalyticsData = () => {
                     <div style={{
                       width: '100%',
                       height: '6px',
-                      background: 'rgba(255, 255, 255, 0.1)',
+                      background: '#E5E7EB',
                       borderRadius: '3px',
                       overflow: 'hidden'
                     }}>
@@ -940,17 +935,16 @@ const getAnalyticsData = () => {
         )}
 
         <div style={{
-          background: 'rgba(255, 255, 255, 0.03)',
-          backdropFilter: 'blur(20px)',
+          background: '#FFFFFF',
           borderRadius: '24px',
           padding: '30px',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          boxShadow: '0 20px 50px rgba(0, 0, 0, 0.2)'
+          border: '1px solid #E5E7EB',
+          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)'
         }}>
           <h2 style={{
             fontSize: '28px',
             fontWeight: '800',
-            color: '#f8fafc',
+            color: '#111827',
             margin: '0 0 30px 0',
             textAlign: 'center'
           }}>
@@ -961,15 +955,15 @@ const getAnalyticsData = () => {
             <div style={{
               textAlign: 'center',
               padding: '40px',
-              background: 'rgba(255, 255, 255, 0.02)',
+              background: '#F9FAFB',
               borderRadius: '16px',
-              border: '1px solid rgba(255, 255, 255, 0.05)'
+              border: '1px solid #E5E7EB'
             }}>
               <div style={{ fontSize: '48px', marginBottom: '20px' }}>📊</div>
-              <div style={{ fontSize: '18px', color: '#f8fafc', marginBottom: '10px' }}>
+              <div style={{ fontSize: '18px', color: '#111827', marginBottom: '10px' }}>
                 No scans yet
               </div>
-              <div style={{ fontSize: '14px', color: '#94a3b8' }}>
+              <div style={{ fontSize: '14px', color: '#6B7280' }}>
                 Upload your first resume to start tracking your progress
               </div>
             </div>
@@ -988,14 +982,13 @@ const getAnalyticsData = () => {
                     position: 'relative'
                   }}>
                     <div style={{
-                      width: '14px',
-                      height: '14px',
-                      background: scan.result.hireability_score >= 80 ? '#10b981' : scan.result.hireability_score >= 60 ? '#f59e0b' : '#ef4444',
+                      width: '12px',
+                      height: '12px',
+                      background: scan.result.hireability_score >= 80 ? '#10B981' : scan.result.hireability_score >= 60 ? '#F59E0B' : '#EF4444',
                       borderRadius: '50%',
                       marginRight: '20px',
                       flexShrink: 0,
-                      border: '3px solid #0f172a',
-                      zIndex: 1,
+                      marginTop: '20px',
                       position: 'relative'
                     }} />
                     <CompactScanCard scan={scan} index={index} total={scans.length} />
@@ -1009,11 +1002,10 @@ const getAnalyticsData = () => {
         <footer style={{
           marginTop: '30px',
           padding: '25px',
-          background: 'rgba(255, 255, 255, 0.03)',
-          backdropFilter: 'blur(20px)',
+          background: '#FFFFFF',
           borderRadius: '24px',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          boxShadow: '0 20px 50px rgba(0, 0, 0, 0.2)',
+          border: '1px solid #E5E7EB',
+          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
           textAlign: 'center'
         }}>
           <div style={{
@@ -1027,37 +1019,40 @@ const getAnalyticsData = () => {
             <div style={{
               width: '40px',
               height: '40px',
-              background: 'linear-gradient(135deg, #2563eb, #1d4ed8)',
+              background: 'linear-gradient(135deg, #10B981, #059669)',
               borderRadius: '10px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center'
             }}>
-              <svg width="20" height="20" viewBox="0 0 64 64" fill="none">
-                <rect width="64" height="64" rx="16" fill="url(#gradient)"/>
-                <path d="M32 16L16 24L32 32L48 24L32 16Z" fill="white"/>
-                <path d="M16 40L32 48L48 40" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M16 32L32 40L48 32" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg width="20" height="20" viewBox="0 0 40 40" fill="none">
+                <rect width="40" height="40" rx="10" fill="url(#logoGrad)"/>
+                <path d="M20 6L10 14L20 22L30 14L20 6Z" fill="white"/>
+                <path d="M10 22L20 30L30 22" stroke="white" strokeWidth="2.2" strokeLinecap="round"/>
+                <path d="M10 28L20 36L30 28" stroke="white" strokeWidth="2.2" strokeLinecap="round"/>
+                <defs>
+                  <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#10B981"/>
+                    <stop offset="100%" stopColor="#059669"/>
+                  </linearGradient>
+                </defs>
               </svg>
             </div>
             <div>
               <div style={{
                 fontSize: '20px',
                 fontWeight: '800',
-                background: 'linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
+                color: '#111827'
               }}>
-                FirstHire Analytics
+                ResumeBOT Analytics
               </div>
-              <div style={{ fontSize: '12px', color: '#94a3b8' }}>
+              <div style={{ fontSize: '12px', color: '#6B7280' }}>
                 Professional Resume Intelligence • {scans.length} scans tracked
               </div>
             </div>
           </div>
-          <div style={{ fontSize: '12px', color: '#64748b', marginTop: '15px' }}>
-            © 2026 FirstHire • AI ATS Analytics By Ankit Sharma
+          <div style={{ fontSize: '12px', color: '#9CA3AF', marginTop: '15px' }}>
+            © 2026 ResumeBOT • AI ATS Analytics
           </div>
         </footer>
       </div>
@@ -1121,17 +1116,17 @@ const getAnalyticsData = () => {
         }
         
         ::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.05);
+          background: #F3F4F6;
           border-radius: 4px;
         }
         
         ::-webkit-scrollbar-thumb {
-          background: rgba(59, 130, 246, 0.5);
+          background: #10B981;
           border-radius: 4px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-          background: rgba(59, 130, 246, 0.7);
+          background: #059669;
         }
       `}</style>
     </div>

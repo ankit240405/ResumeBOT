@@ -4,7 +4,6 @@ import Upload from "./pages/Upload.jsx";
 import Profile from "./pages/Profile.jsx";
 import Result from "./pages/Result.jsx";
 import Navbar from "./components/Navbar.jsx";
-import Mentor from "./pages/Mentor.jsx";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
 
 
@@ -49,14 +48,7 @@ function App() {
             </ProtectedRoute>
           }
         /> 
-  <Route
-  path="/mentor"
-  element={
-    <ProtectedRoute>
-      <Mentor />
-    </ProtectedRoute>
-  }
-/>
+ 
 
         {}
         <Route

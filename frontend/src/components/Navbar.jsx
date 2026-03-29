@@ -5,43 +5,61 @@ import { useState, useEffect } from "react";
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 900);
     };
     
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    
     checkMobile();
     window.addEventListener('resize', checkMobile);
+    window.addEventListener('scroll', handleScroll);
     
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
-    <nav style={styles.navbar}>
+    <nav style={{
+      ...styles.navbar,
+      background: scrolled 
+        ? "rgba(255, 255, 255, 0.98)" 
+        : "#FFFFFF",
+      boxShadow: scrolled 
+        ? "0 2px 12px rgba(0, 0, 0, 0.06)" 
+        : "0 1px 0 rgba(0, 0, 0, 0.05)"
+    }}>
       <div style={styles.logoSection}>
         <Link to="/" style={styles.logoLink}>
           <div style={styles.logoContainer}>
             <div style={styles.logoIcon}>
-              <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="64" height="64" rx="16" fill="url(#gradient)"/>
-                <path d="M32 16L16 24L32 32L48 24L32 16Z" fill="white"/>
-                <path d="M16 40L32 48L48 40" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M16 32L32 40L48 32" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg width="34" height="34" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="10" fill="url(#logoGradient)"/>
+                <path d="M20 6L10 14L20 22L30 14L20 6Z" fill="white"/>
+                <path d="M10 22L20 30L30 22" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M10 28L20 36L30 28" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="20" cy="14" r="2" fill="#10B981"/>
                 <defs>
-                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#2563EB"/>
-                    <stop offset="100%" stopColor="#1D4ED8"/>
+                  <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#10B981"/>
+                    <stop offset="100%" stopColor="#059669"/>
                   </linearGradient>
                 </defs>
               </svg>
             </div>
             <div style={styles.logoText}>
               <span style={styles.companyName}>
-                FIRST<span style={styles.accent}>HIRE</span>
+                RESUME<span style={styles.accent}>BOT</span>
               </span>
               <span style={styles.companyTagline}>
-                AI ATS Scanner by Ankit Sharma
+                AI Resume Analyzer
               </span>
             </div>
           </div>
@@ -51,19 +69,19 @@ function Navbar() {
       <button 
         style={{
           ...styles.mobileMenuButton,
-          background: mobileMenuOpen ? 'rgba(96, 165, 250, 0.1)' : 'transparent'
+          background: mobileMenuOpen ? 'rgba(16, 185, 129, 0.08)' : 'transparent'
         }}
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         className="mobile-menu-button"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           {mobileMenuOpen ? (
-            <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M18 6L6 18M6 6L18 18" stroke="#111827" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           ) : (
             <>
-              <path d="M3 12H21" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M3 6H21" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M3 18H21" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M3 12H21" stroke="#111827" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M3 6H21" stroke="#111827" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M3 18H21" stroke="#111827" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </>
           )}
         </svg>
@@ -92,15 +110,6 @@ function Navbar() {
             </div>
           </Link>
           
-          <Link to="/mentor" style={styles.navLink} className="nav-link">
-            <div style={styles.linkContent}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={styles.linkIcon}>
-                <path d="M12 3C7.03 3 3 6.58 3 11C3 13.38 4.14 15.5 5.91 16.84L5 21L9.09 19.36C10.02 19.77 11 20 12 20C16.97 20 21 16.42 21 11C21 6.58 16.97 3 12 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span>Career Mentor</span>
-            </div>
-          </Link>
-          
           <div style={styles.userButtonContainer}>
             <div style={styles.userBadge} className="user-badge">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{marginRight: '6px'}}>
@@ -115,7 +124,8 @@ function Navbar() {
                   elements: {
                     userButtonAvatarBox: {
                       width: 40,
-                      height: 40
+                      height: 40,
+                      border: "2px solid #10B981"
                     }
                   }
                 }}
@@ -164,15 +174,6 @@ function Navbar() {
             </div>
           </Link>
           
-          <Link to="/mentor" style={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>
-            <div style={styles.linkContent}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={styles.linkIcon}>
-                <path d="M12 3C7.03 3 3 6.58 3 11C3 13.38 4.14 15.5 5.91 16.84L5 21L9.09 19.36C10.02 19.77 11 20 12 20C16.97 20 21 16.42 21 11C21 6.58 16.97 3 12 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span>Career Mentor</span>
-            </div>
-          </Link>
-          
           <div style={styles.mobileUserSection}>
             <div style={styles.mobileUserBadge}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{marginRight: '8px'}}>
@@ -187,7 +188,8 @@ function Navbar() {
                   elements: {
                     userButtonAvatarBox: {
                       width: 44,
-                      height: 44
+                      height: 44,
+                      border: "2px solid #10B981"
                     }
                   }
                 }}
@@ -218,16 +220,16 @@ const styles = {
     position: 'sticky',
     top: 0,
     zIndex: 1000,
-    padding: "12px 40px",
-    background: "rgba(15, 23, 42, 0.95)",
-    backdropFilter: "blur(20px)",
-    color: "white",
+    padding: "14px 40px",
+    background: "#FFFFFF",
+    color: "#111827",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-    flexWrap: 'wrap'
+    borderBottom: "1px solid #F3F4F6",
+    transition: "all 0.3s ease",
+    flexWrap: 'wrap',
+    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
   },
 
   mobileMenuButton: {
@@ -248,43 +250,41 @@ const styles = {
     top: '70px',
     left: 0,
     right: 0,
-    background: "rgba(15, 23, 42, 0.98)",
-    backdropFilter: "blur(30px)",
+    background: "#FFFFFF",
     padding: '20px',
-    borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-    borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-    boxShadow: "0 20px 50px rgba(0, 0, 0, 0.3)",
+    borderTop: "1px solid #F3F4F6",
+    borderBottom: "1px solid #F3F4F6",
+    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.05)",
     zIndex: 999
   },
 
   mobileNavLink: {
-    color: "#cbd5e1",
+    color: "#4B5563",
     textDecoration: "none",
-    padding: "16px 20px",
+    padding: "14px 16px",
     borderRadius: "12px",
     transition: "all 0.3s ease",
-    fontSize: "1rem",
+    fontSize: "0.95rem",
     fontWeight: "500",
     display: "flex",
     alignItems: "center",
     marginBottom: '8px',
-    borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
-    background: 'rgba(255, 255, 255, 0.03)'
+    background: '#F9FAFB'
   },
 
   mobileLoginLink: {
-    background: "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
+    background: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
     color: "white",
     textDecoration: "none",
-    padding: "16px 24px",
+    padding: "14px 24px",
     borderRadius: "12px",
-    fontSize: "1rem",
+    fontSize: "0.95rem",
     fontWeight: "600",
     display: "flex",
     alignItems: "center",
     gap: "12px",
     transition: "all 0.3s ease",
-    boxShadow: "0 4px 15px rgba(37, 99, 235, 0.3)",
+    boxShadow: "0 2px 8px rgba(16, 185, 129, 0.2)",
     justifyContent: 'center',
     marginTop: '8px'
   },
@@ -296,16 +296,16 @@ const styles = {
     gap: "16px",
     marginTop: "20px",
     paddingTop: "20px",
-    borderTop: "1px solid rgba(255, 255, 255, 0.1)"
+    borderTop: "1px solid #F3F4F6"
   },
 
   mobileUserBadge: {
     display: "flex",
     alignItems: "center",
-    background: "rgba(16, 185, 129, 0.1)",
+    background: "rgba(16, 185, 129, 0.08)",
     padding: "10px 16px",
     borderRadius: "20px",
-    border: "1px solid rgba(16, 185, 129, 0.3)",
+    border: "1px solid rgba(16, 185, 129, 0.2)",
     width: '100%',
     justifyContent: 'center'
   },
@@ -336,8 +336,8 @@ const styles = {
   },
 
   logoIcon: {
-    width: "32px",
-    height: "32px",
+    width: "34px",
+    height: "34px",
     flexShrink: 0
   },
 
@@ -348,9 +348,9 @@ const styles = {
 
   companyName: {
     fontSize: "1.4rem",
-    fontWeight: "900",
+    fontWeight: "800",
     letterSpacing: "-0.5px",
-    background: "linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%)",
+    background: "linear-gradient(135deg, #111827 0%, #374151 100%)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     backgroundClip: "text",
@@ -359,8 +359,7 @@ const styles = {
   },
 
   accent: {
-    color: "#60a5fa",
-    background: "linear-gradient(90deg, #60a5fa, #93c5fd)",
+    background: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     backgroundClip: "text"
@@ -368,7 +367,7 @@ const styles = {
 
   companyTagline: {
     fontSize: "0.7rem",
-    color: "#94a3b8",
+    color: "#6B7280",
     fontWeight: "500",
     letterSpacing: "0.3px",
     whiteSpace: 'nowrap'
@@ -376,18 +375,18 @@ const styles = {
 
   navLinks: {
     display: "flex",
-    gap: "20px",
+    gap: "16px",
     alignItems: "center",
     flexWrap: 'wrap'
   },
 
   navLink: {
-    color: "#cbd5e1",
+    color: "#4B5563",
     textDecoration: "none",
     padding: "8px 16px",
     borderRadius: "10px",
     transition: "all 0.3s ease",
-    fontSize: "0.95rem",
+    fontSize: "0.9rem",
     fontWeight: "500",
     display: "flex",
     alignItems: "center",
@@ -401,23 +400,23 @@ const styles = {
   },
 
   linkIcon: {
-    color: "#60a5fa",
+    color: "#10B981",
     flexShrink: 0
   },
 
   userButtonContainer: {
     display: "flex",
     alignItems: "center",
-    gap: "15px"
+    gap: "12px"
   },
 
   userBadge: {
     display: "flex",
     alignItems: "center",
-    background: "rgba(16, 185, 129, 0.1)",
+    background: "rgba(16, 185, 129, 0.08)",
     padding: "6px 12px",
     borderRadius: "20px",
-    border: "1px solid rgba(16, 185, 129, 0.3)",
+    border: "1px solid rgba(16, 185, 129, 0.2)",
     whiteSpace: 'nowrap'
   },
 
@@ -432,18 +431,18 @@ const styles = {
   },
 
   loginLink: {
-    background: "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
+    background: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
     color: "white",
     textDecoration: "none",
     padding: "10px 24px",
     borderRadius: "10px",
-    fontSize: "0.95rem",
+    fontSize: "0.9rem",
     fontWeight: "600",
     display: "flex",
     alignItems: "center",
     gap: "8px",
     transition: "all 0.3s ease",
-    boxShadow: "0 2px 10px rgba(37, 99, 235, 0.3)",
+    boxShadow: "0 2px 8px rgba(16, 185, 129, 0.2)",
     whiteSpace: 'nowrap'
   }
 };
@@ -451,33 +450,41 @@ const styles = {
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
   .nav-link:hover {
-    background: rgba(96, 165, 250, 0.1);
-    color: #f8fafc;
+    background: rgba(16, 185, 129, 0.08);
+    color: #111827;
     transform: translateY(-1px);
+  }
+
+  .nav-link:hover svg {
+    stroke: #10B981;
   }
 
   .login-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
   }
 
   .user-badge:hover {
-    background: rgba(16, 185, 129, 0.15);
+    background: rgba(16, 185, 129, 0.12);
   }
 
   .mobile-menu-button:hover {
-    background: rgba(96, 165, 250, 0.1) !important;
+    background: rgba(16, 185, 129, 0.08) !important;
   }
 
   .mobile-nav-link:hover {
-    background: rgba(96, 165, 250, 0.15);
-    color: #f8fafc;
+    background: rgba(16, 185, 129, 0.12);
+    color: #111827;
     transform: translateX(5px);
+  }
+
+  .mobile-nav-link:hover svg {
+    stroke: #10B981;
   }
 
   .mobile-login-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
   }
 
   @media (max-width: 1100px) {
@@ -493,12 +500,12 @@ styleSheet.textContent = `
     
     .nav-link {
       padding: 8px 12px !important;
-      font-size: 0.9rem !important;
+      font-size: 0.85rem !important;
     }
     
     .login-link {
-      padding: 10px 16px !important;
-      font-size: 0.9rem !important;
+      padding: 10px 18px !important;
+      font-size: 0.85rem !important;
     }
   }
 
@@ -654,59 +661,59 @@ styleSheet.textContent = `
 
   @media (min-width: 1200px) {
     .navbar {
-      padding: 12px 60px !important;
+      padding: 14px 60px !important;
     }
     
     .nav-links {
-      gap: 25px !important;
+      gap: 20px !important;
     }
     
     .nav-link {
-      font-size: 1rem !important;
+      font-size: 0.95rem !important;
       padding: 10px 20px !important;
     }
     
     .login-link {
-      font-size: 1rem !important;
+      font-size: 0.95rem !important;
       padding: 12px 28px !important;
     }
   }
 
   @media (min-width: 1440px) {
     .navbar {
-      padding: 14px 80px !important;
+      padding: 16px 80px !important;
+    }
+    
+    .company-name {
+      font-size: 1.5rem !important;
+    }
+    
+    .company-tagline {
+      font-size: 0.75rem !important;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .navbar {
+      padding: 18px 100px !important;
+    }
+    
+    .logo-icon {
+      width: 38px !important;
+      height: 38px !important;
     }
     
     .company-name {
       font-size: 1.6rem !important;
     }
     
-    .company-tagline {
-      font-size: 0.8rem !important;
-    }
-  }
-
-  @media (min-width: 1920px) {
-    .navbar {
-      padding: 16px 100px !important;
-    }
-    
-    .logo-icon {
-      width: 40px !important;
-      height: 40px !important;
-    }
-    
-    .company-name {
-      font-size: 1.8rem !important;
-    }
-    
     .nav-link {
-      font-size: 1.1rem !important;
+      font-size: 1rem !important;
       padding: 12px 24px !important;
     }
     
     .login-link {
-      font-size: 1.1rem !important;
+      font-size: 1rem !important;
       padding: 14px 32px !important;
     }
   }

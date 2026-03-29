@@ -7,7 +7,7 @@ import analyzeRoutes from "./routes/analyzeRoutes.js";
 
 dotenv.config();
 
-console.log("OpenAI Key Loaded?", process.env.OPENAI_API_KEY ? "YES" : "NO");
+console.log("OpenRouter Key Loaded?", process.env.OPENROUTER_API_KEY ? "YES" : "NO");
 console.log("Mongo URI Loaded?", process.env.MONGO_URI ? "YES" : "NO");
 
 async function startServer() {

@@ -1,19 +1,10 @@
 import dotenv from "dotenv";
-dotenv.config(); 
+dotenv.config();
 
 import pdf from "pdf-parse-fork";
 import mammoth from "mammoth";
 import textract from "textract";
-import OpenAI from "openai";
-
-console.log(
-  "OpenAI Key Loaded in parseResume:",
-  process.env.OPENAI_API_KEY ? "YES" : "NO"
-);
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+import axios from "axios";
 
 export async function extractText(buffer, mimetype) {
   try {
@@ -81,7 +72,7 @@ export async function analyzeResume(buffer, mimetype) {
       throw new Error("Uploaded file does not appear to be a valid resume");
     }
 
-    const prompt = `
+     const prompt = `
 You are a professional resume evaluation system modeled after
 Enhancv, ResumeWorded, VMock, and top-tier ATS systems.
 
@@ -131,15 +122,28 @@ Analyze the following resume:
 ${text}
 `;
 
-    const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [{ role: "user", content: prompt }],
-      temperature: 0,
-      response_format: { type: "json_object" },
-    });
+    const response = await axios.post(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        model: "meta-llama/llama-3-8b-instruct",
+        messages: [{ role: "user", content: prompt }],
+        temperature: 0
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+          "Content-Type": "application/json"
+        }
+      }
+    );
 
-    const output = response.choices[0].message.content;
-    return JSON.parse(output);
+    let output = response.data.choices[0].message.content;
+
+    const start = output.indexOf("{");
+    const end = output.lastIndexOf("}");
+    const cleanJSON = output.slice(start, end + 1);
+
+    return JSON.parse(cleanJSON);
 
   } catch (err) {
     console.error("ATS Error:", err);

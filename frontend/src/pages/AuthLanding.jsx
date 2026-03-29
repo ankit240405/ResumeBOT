@@ -18,39 +18,36 @@ export default function AuthLanding() {
 
   return (
     <div style={styles.page}>
-      {}
       <div style={styles.animatedBackground}>
         {[...Array(isMobile ? 3 : 6)].map((_, i) => (
           <div key={i} style={getFloatingElementStyle(i, isMobile)}></div>
         ))}
       </div>
 
-      {}
       <div style={{
         ...styles.container,
         ...(isMobile ? styles.containerMobile : {})
       }}>
-        {}
         <div style={{
           ...styles.leftPanel,
           ...(isMobile ? styles.leftPanelMobile : {})
         }}>
           <div style={styles.leftContent}>
-            {}
             <div style={styles.logoSection}>
               <div style={{
                 ...styles.logoMain,
                 ...(isMobile ? { marginBottom: '15px' } : {})
               }}>
-                <svg width={isMobile ? "48" : "64"} height={isMobile ? "48" : "64"} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="64" height="64" rx="16" fill="url(#gradient)"/>
-                  <path d="M32 16L16 24L32 32L48 24L32 16Z" fill="white"/>
-                  <path d="M16 40L32 48L48 40" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M16 32L32 40L48 32" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg width={isMobile ? "48" : "64"} height={isMobile ? "48" : "64"} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="40" height="40" rx="10" fill="url(#logoGradient)"/>
+                  <path d="M20 6L10 14L20 22L30 14L20 6Z" fill="white"/>
+                  <path d="M10 22L20 30L30 22" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M10 28L20 36L30 28" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <circle cx="20" cy="14" r="2" fill="#10B981"/>
                   <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#2563EB"/>
-                      <stop offset="100%" stopColor="#1D4ED8"/>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#10B981"/>
+                      <stop offset="100%" stopColor="#059669"/>
                     </linearGradient>
                   </defs>
                 </svg>
@@ -58,81 +55,79 @@ export default function AuthLanding() {
               <div style={styles.logoText}>
                 <h1 style={{
                   ...styles.companyName,
-                  ...(isMobile ? { fontSize: '2.2rem' } : {})
+                  ...(isMobile ? { fontSize: '2rem' } : {})
                 }}>
-                  FIRST<span style={styles.accent}>HIRE</span>
+                  RESUME<span style={styles.accent}>BOT</span>
                 </h1>
                 <p style={{
                   ...styles.companyTagline,
-                  ...(isMobile ? { fontSize: '1rem' } : {})
+                  ...(isMobile ? { fontSize: '0.9rem' } : {})
                 }}>
-                   ATS Resume Intelligence
+                  AI Resume Intelligence
                 </p>
               </div>
             </div>
 
-            {}
             {!isMobile && (
               <>
                 <div style={styles.heroSection}>
                   <div style={styles.heroBadge}>
-                    <span style={styles.badgeIcon}>🚀</span>
-                    <span style={styles.badgeText}>Industry Leading</span>
+                    <span style={styles.badgeIcon}>✨</span>
+                    <span style={styles.badgeText}>AI-Powered Analysis</span>
                   </div>
                   <h2 style={styles.heroTitle}>
                     Optimize Your Resume with<br/>
-                    <span style={styles.heroHighlight}>AI-Powered ATS Analysis</span>
+                    <span style={styles.heroHighlight}>Smart ATS Technology</span>
                   </h2>
                   <p style={styles.heroDescription}>
-                    Get instant compatibility scores, smart job matches, and expert feedback to maximize your career opportunities.
+                    Get instant compatibility scores, intelligent feedback, and expert insights to maximize your career opportunities.
                   </p>
                 </div>
 
-                {}
                 <div style={styles.featuresGrid}>
                   <div style={styles.featureCard}>
                     <div style={styles.featureIcon}>📊</div>
                     <div style={styles.featureContent}>
-                      <h3 style={styles.featureTitle}>Real-Time ATS Scoring</h3>
-                      <p style={styles.featureDesc}>Instant compatibility analysis</p>
+                      <h3 style={styles.featureTitle}>ATS Score Analysis</h3>
+                      <p style={styles.featureDesc}>Real-time compatibility check</p>
                     </div>
                   </div>
                   <div style={styles.featureCard}>
-                    <div style={styles.featureIcon}>🎯</div>
+                    <div style={styles.featureIcon}>🤖</div>
                     <div style={styles.featureContent}>
                       <h3 style={styles.featureTitle}>AI Career Mentor</h3>
-                      <p style={styles.featureDesc}>Assists you in achieving your goals</p>
+                      <p style={styles.featureDesc}>Personalized guidance</p>
                     </div>
                   </div>
                   <div style={styles.featureCard}>
                     <div style={styles.featureIcon}>⚡</div>
                     <div style={styles.featureContent}>
                       <h3 style={styles.featureTitle}>Optimization Tips</h3>
-                      <p style={styles.featureDesc}>Actionable improvement insights</p>
+                      <p style={styles.featureDesc}>Actionable improvements</p>
                     </div>
                   </div>
                   <div style={styles.featureCard}>
                     <div style={styles.featureIcon}>📈</div>
                     <div style={styles.featureContent}>
                       <h3 style={styles.featureTitle}>Career Analytics</h3>
-                      <p style={styles.featureDesc}>Track progress & competitiveness</p>
+                      <p style={styles.featureDesc}>Track your progress</p>
                     </div>
                   </div>
                 </div>
 
-                {}
+                
                 <div style={styles.statsSection}>
                   <div style={styles.statItem}>
-                    <div style={styles.statNumber}>High</div>
+                    <div style={styles.statNumber}>99%</div>
                     <div style={styles.statLabel}>Accuracy Rate</div>
                   </div>
                   <div style={styles.statItem}>
-                    <div style={styles.statNumber}>Quick</div>
-                    <div style={styles.statLabel}>ATS System</div>
+                    <div style={styles.statNumber}>Real-time</div>
+                    <div style={styles.statLabel}>ATS Analysis</div>
                   </div>
                   <div style={styles.statItem}>
-                    <div style={styles.statNumber}>Fast</div>
-                    <div style={styles.statLabel}>Response Time</div>
+                    <div style={styles.statNumber}>Instant</div>
+                    <div style={styles.statLabel}>Results</div>
                   </div>
                 </div>
               </>
@@ -140,32 +135,31 @@ export default function AuthLanding() {
           </div>
         </div>
 
-        {}
+        
         <div style={{
           ...styles.rightPanel,
           ...(isMobile ? styles.rightPanelMobile : {})
         }}>
           <div style={styles.rightContent}>
-            {}
             <div style={{
               ...styles.loginCard,
               ...(isMobile ? styles.loginCardMobile : {})
             }}>
-              {}
+             
               <div style={styles.cardHeader}>
                 <div style={styles.welcomeSection}>
                   <h2 style={{
                     ...styles.welcomeTitle,
-                    ...(isMobile ? { fontSize: '2rem' } : {})
+                    ...(isMobile ? { fontSize: '1.8rem' } : {})
                   }}>
                     Welcome Back
                   </h2>
                   <p style={{
                     ...styles.welcomeSubtitle,
-                    ...(isMobile ? { fontSize: '1rem' } : {})
+                    ...(isMobile ? { fontSize: '0.95rem' } : {})
                   }}>
                     {isMobile 
-                      ? "Sign in to access your ATS scanner" 
+                      ? "Sign in to analyze your resume" 
                       : "Sign in to access your ATS scanner and career insights"}
                   </p>
                 </div>
@@ -175,12 +169,12 @@ export default function AuthLanding() {
                       <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       <path d="M9 12L11 14L15 10" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                    <span style={styles.securityText}>Highly Secure</span>
+                    <span style={styles.securityText}>Secure & Encrypted</span>
                   </div>
                 )}
               </div>
 
-              {}
+              
               <button
                 style={{
                   ...styles.loginBtn,
@@ -194,50 +188,42 @@ export default function AuthLanding() {
                     <path d="M15 7L20 12L15 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 )}
-                Continue to Login/Signup
+                Continue to Login / Signup
               </button>
 
-              {}
-              {!isMobile && (
-                <div style={styles.trustNote}>
-                  <div style={styles.trustIcon}>🔒</div>
-                  <p style={styles.trustText}>Your data is protected with encryption</p>
-                </div>
-              )}
-
-              {}
+            
               {isMobile && (
                 <div style={styles.mobileStats}>
                   <div style={styles.mobileStat}>
-                    <div style={styles.mobileStatNumber}>High</div>
-                    <div style={styles.mobileStatLabel}>Accuracy Rate</div>
+                    <div style={styles.mobileStatNumber}>99%</div>
+                    <div style={styles.mobileStatLabel}>Accuracy</div>
                   </div>
                   <div style={styles.mobileStat}>
-                    <div style={styles.mobileStatNumber}>Quick</div>
-                    <div style={styles.mobileStatLabel}>ATS System</div>
+                    <div style={styles.mobileStatNumber}>Real-time</div>
+                    <div style={styles.mobileStatLabel}>Analysis</div>
                   </div>
                   <div style={styles.mobileStat}>
-                    <div style={styles.mobileStatNumber}>Fast</div>
-                    <div style={styles.mobileStatLabel}>Response Time</div>
+                    <div style={styles.mobileStatNumber}>Instant</div>
+                    <div style={styles.mobileStatLabel}>Results</div>
                   </div>
                 </div>
               )}
 
-              {}
+              
               <div style={styles.hiddenClerk}>
                 <SignIn routing="path" path="/login" />
               </div>
 
-              {}
+            
               <div style={{
                 ...styles.simpleFooter,
                 ...(isMobile ? { paddingTop: '15px' } : {})
               }}>
                 <p style={{
                   ...styles.copyright,
-                  ...(isMobile ? { fontSize: '0.75rem' } : {})
+                  ...(isMobile ? { fontSize: '0.7rem' } : {})
                 }}>
-                  © 2024 FirstHire by Ankit Sharma
+                  © 2026 ResumeBOT. All rights reserved.
                 </p>
               </div>
             </div>
@@ -251,8 +237,8 @@ export default function AuthLanding() {
 const getFloatingElementStyle = (i, isMobile) => ({
   position: 'absolute',
   background: `linear-gradient(45deg, 
-    rgba(37, 99, 235, ${0.03 + i * 0.01}), 
-    rgba(59, 130, 246, ${0.02 + i * 0.01})
+    rgba(16, 185, 129, ${0.03 + i * 0.01}), 
+    rgba(5, 150, 105, ${0.02 + i * 0.01})
   )`,
   borderRadius: i % 2 === 0 ? '50%' : '20px',
   width: isMobile ? `${40 + i * 15}px` : `${80 + i * 25}px`,
@@ -322,7 +308,7 @@ const styles = {
     padding: '30px 25px',
     flex: 'none',
     height: 'auto',
-    minHeight: '300px'
+    minHeight: '280px'
   },
   
   leftContent: {
@@ -344,8 +330,8 @@ const styles = {
   },
   
   companyName: {
-    fontSize: '3.2rem',
-    fontWeight: '900',
+    fontSize: '3rem',
+    fontWeight: '800',
     letterSpacing: '-1px',
     margin: '0 0 8px 0',
     background: 'linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%)',
@@ -355,15 +341,14 @@ const styles = {
   },
   
   accent: {
-    color: '#60a5fa',
-    background: 'linear-gradient(90deg, #60a5fa, #93c5fd)',
+    background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text'
   },
   
   companyTagline: {
-    fontSize: '1.2rem',
+    fontSize: '1.1rem',
     color: '#94a3b8',
     fontWeight: '500',
     margin: '0',
@@ -396,7 +381,7 @@ const styles = {
   },
   
   heroTitle: {
-    fontSize: '2.8rem',
+    fontSize: '2.6rem',
     fontWeight: '800',
     lineHeight: '1.2',
     margin: '0 0 20px 0',
@@ -404,15 +389,14 @@ const styles = {
   },
   
   heroHighlight: {
-    color: '#60a5fa',
-    background: 'linear-gradient(90deg, #60a5fa, #93c5fd)',
+    background: 'linear-gradient(135deg, #10B981 0%, #34D399 100%)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text'
   },
   
   heroDescription: {
-    fontSize: '1.2rem',
+    fontSize: '1.1rem',
     color: '#cbd5e1',
     lineHeight: '1.6',
     margin: '0',
@@ -440,7 +424,7 @@ const styles = {
     fontSize: '24px',
     width: '50px',
     height: '50px',
-    background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(59, 130, 246, 0.2))',
+    background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2))',
     borderRadius: '12px',
     display: 'flex',
     alignItems: 'center',
@@ -452,14 +436,14 @@ const styles = {
   },
   
   featureTitle: {
-    fontSize: '1.1rem',
+    fontSize: '1rem',
     fontWeight: '700',
     margin: '0 0 5px 0',
     color: '#f8fafc'
   },
   
   featureDesc: {
-    fontSize: '0.9rem',
+    fontSize: '0.85rem',
     color: '#94a3b8',
     margin: '0',
     lineHeight: '1.4'
@@ -478,9 +462,12 @@ const styles = {
   },
   
   statNumber: {
-    fontSize: '2rem',
+    fontSize: '1.8rem',
     fontWeight: '800',
-    color: '#60a5fa',
+    background: 'linear-gradient(135deg, #10B981 0%, #34D399 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
     marginBottom: '5px'
   },
   
@@ -531,14 +518,14 @@ const styles = {
   },
   
   welcomeTitle: {
-    fontSize: '2.5rem',
+    fontSize: '2.3rem',
     fontWeight: '800',
     color: '#0f172a',
     margin: '0 0 12px 0'
   },
   
   welcomeSubtitle: {
-    fontSize: '1.1rem',
+    fontSize: '1rem',
     color: '#64748b',
     margin: '0',
     lineHeight: '1.5'
@@ -550,25 +537,25 @@ const styles = {
     justifyContent: 'center',
     gap: '10px',
     padding: '12px 20px',
-    background: '#f0f9ff',
+    background: '#f0fdf4',
     borderRadius: '12px',
-    border: '1px solid #e0f2fe'
+    border: '1px solid #dcfce7'
   },
   
   securityText: {
-    fontSize: '0.95rem',
+    fontSize: '0.9rem',
     fontWeight: '600',
-    color: '#0c4a6e'
+    color: '#059669'
   },
   
   loginBtn: {
     width: '100%',
     padding: '18px 24px',
-    background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+    background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
     color: 'white',
     border: 'none',
     borderRadius: '12px',
-    fontSize: '1.1rem',
+    fontSize: '1rem',
     fontWeight: '600',
     display: 'flex',
     alignItems: 'center',
@@ -576,35 +563,13 @@ const styles = {
     gap: '12px',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
-    boxShadow: '0 4px 6px -1px rgba(37, 99, 235, 0.3)',
+    boxShadow: '0 4px 6px -1px rgba(16, 185, 129, 0.3)',
     marginBottom: '30px'
   },
   
   btnIcon: {
     width: '20px',
     height: '20px'
-  },
-  
-  trustNote: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-    padding: '16px',
-    background: '#f8fafc',
-    borderRadius: '12px',
-    border: '1px solid #e2e8f0',
-    marginBottom: '30px'
-  },
-  
-  trustIcon: {
-    fontSize: '20px'
-  },
-  
-  trustText: {
-    fontSize: '0.9rem',
-    color: '#475569',
-    margin: '0',
-    lineHeight: '1.4'
   },
   
   mobileStats: {
@@ -623,14 +588,17 @@ const styles = {
   },
   
   mobileStatNumber: {
-    fontSize: '1.5rem',
+    fontSize: '1.3rem',
     fontWeight: '800',
-    color: '#2563eb',
+    background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
     marginBottom: '3px'
   },
   
   mobileStatLabel: {
-    fontSize: '0.8rem',
+    fontSize: '0.75rem',
     color: '#6b7280',
     fontWeight: '500'
   },
@@ -646,7 +614,7 @@ const styles = {
   },
   
   copyright: {
-    fontSize: '0.85rem',
+    fontSize: '0.8rem',
     color: '#6b7280',
     margin: '0'
   }
@@ -671,7 +639,7 @@ styleSheet.textContent = `
   
   button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 6px 12px rgba(16, 185, 129, 0.4);
   }
 
   /* Tablet Responsive */
@@ -742,11 +710,11 @@ styleSheet.textContent = `
     }
     
     .company-name {
-      font-size: 1.8rem !important;
+      font-size: 1.6rem !important;
     }
     
     .welcome-title {
-      font-size: 1.6rem !important;
+      font-size: 1.5rem !important;
     }
     
     .mobile-stats {
