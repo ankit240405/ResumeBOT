@@ -1503,7 +1503,7 @@ export default function Result() {
                   letterSpacing: '0.5px',
                   fontWeight: '500'
                 }}>
-                  ENTERPRISE ATS
+                  AI ATS
                 </div>
               </div>
             </div>
@@ -1524,7 +1524,7 @@ export default function Result() {
               flexWrap: 'wrap',
               justifyContent: 'center'
             }}>
-              <span>v2.1.4</span>
+              <span>version1</span>
               <div style={{
                 width: '3px',
                 height: '3px',
@@ -1532,7 +1532,7 @@ export default function Result() {
                 background: '#10B981',
                 opacity: '0.6'
               }} />
-              <span>Enterprise Edition</span>
+              <span>Built By Ankit Sharma</span>
             </div>
             
             <div style={{
