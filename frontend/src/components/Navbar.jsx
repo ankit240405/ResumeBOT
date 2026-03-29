@@ -56,7 +56,7 @@ function Navbar() {
             </div>
             <div style={styles.logoText}>
               <span style={styles.companyName}>
-                RESUME<span style={styles.accent}>BOT</span>
+                Resume<span style={styles.accent}>BOT</span>
               </span>
               <span style={styles.companyTagline}>
                 AI Resume Analyzer
