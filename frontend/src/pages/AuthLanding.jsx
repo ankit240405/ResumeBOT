@@ -57,7 +57,7 @@ export default function AuthLanding() {
                   ...styles.companyName,
                   ...(isMobile ? { fontSize: '2rem' } : {})
                 }}>
-                  RESUME<span style={styles.accent}>BOT</span>
+                  Resume<span style={styles.accent}>BOT</span>
                 </h1>
                 <p style={{
                   ...styles.companyTagline,
