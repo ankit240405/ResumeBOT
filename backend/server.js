@@ -12,8 +12,12 @@ console.log("Mongo URI Loaded?", process.env.MONGO_URI ? "YES" : "NO");
 
 async function startServer() {
   try {
-    await connectDB();
-
+    try {
+  await connectDB();
+  console.log("MongoDB Connected ✔");
+} catch (err) {
+  console.error("MongoDB connection failed ❌", err);
+}
     const app = express();
 
     app.use(cors());
